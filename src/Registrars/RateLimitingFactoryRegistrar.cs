@@ -13,16 +13,20 @@ public static class RateLimitingFactoryRegistrar
     /// Adds <see cref="IRateLimitingFactory"/> as a singleton service. <para/>
     /// </summary>
     /// <remarks>This is most likely what you want.</remarks>
-    public static void AddRateLimitingFactoryAsSingleton(this IServiceCollection services)
+    public static IServiceCollection AddRateLimitingFactoryAsSingleton(this IServiceCollection services)
     {
         services.TryAddSingleton<IRateLimitingFactory, RateLimitingFactory>();
+
+        return services;
     }
 
     /// <summary>
     /// Adds <see cref="IRateLimitingFactory"/> as a scoped service. <para/>
     /// </summary>
-    public static void AddRateLimitingFactoryAsScoped(this IServiceCollection services)
+    public static IServiceCollection AddRateLimitingFactoryAsScoped(this IServiceCollection services)
     {
         services.TryAddScoped<IRateLimitingFactory, RateLimitingFactory>();
+
+        return services;
     }
 }
