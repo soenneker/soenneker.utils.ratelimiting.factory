@@ -1,4 +1,4 @@
-# Contributing to Soenneker.Utils.RateLimiting.Factory
+﻿# Contributing to Soenneker.Utils.RateLimiting.Factory
 
 We're excited that you're interested in contributing!
 
