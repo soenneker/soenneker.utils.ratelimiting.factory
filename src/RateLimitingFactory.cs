@@ -8,7 +8,7 @@ using System.Threading;
 namespace Soenneker.Utils.RateLimiting.Factory;
 
 /// <inheritdoc cref="IRateLimitingFactory"/>
-public class RateLimitingFactory : IRateLimitingFactory
+public sealed class RateLimitingFactory : IRateLimitingFactory
 {
     private readonly SingletonDictionary<RateLimitingExecutor> _executors;
 
@@ -46,13 +46,11 @@ public class RateLimitingFactory : IRateLimitingFactory
 
     public ValueTask DisposeAsync()
     {
-        GC.SuppressFinalize(this);
         return _executors.DisposeAsync();
     }
 
     public void Dispose()
     {
-        GC.SuppressFinalize(this);
         _executors.Dispose();
     }
 }
