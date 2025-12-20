@@ -10,14 +10,12 @@ namespace Soenneker.Utils.RateLimiting.Factory;
 /// <inheritdoc cref="IRateLimitingFactory"/>
 public sealed class RateLimitingFactory : IRateLimitingFactory
 {
-    private readonly SingletonDictionary<RateLimitingExecutor> _executors;
+    private readonly SingletonDictionary<RateLimitingExecutor, TimeSpan> _executors;
 
     public RateLimitingFactory()
     {
-        _executors = new SingletonDictionary<RateLimitingExecutor>(args =>
+        _executors = new SingletonDictionary<RateLimitingExecutor, TimeSpan>(timeSpan =>
         {
-            var timeSpan = (TimeSpan) args[0];
-
             var executor = new RateLimitingExecutor(timeSpan);
 
             return executor;
@@ -26,12 +24,12 @@ public sealed class RateLimitingFactory : IRateLimitingFactory
 
     public ValueTask<RateLimitingExecutor> Get(string id, TimeSpan interval, CancellationToken cancellationToken = default)
     {
-        return _executors.Get(id, cancellationToken, interval);
+        return _executors.Get(id, interval, cancellationToken);
     }
 
     public RateLimitingExecutor GetSync(string id, TimeSpan interval, CancellationToken cancellationToken = default)
     {
-        return _executors.GetSync(id, cancellationToken, interval);
+        return _executors.GetSync(id, interval, cancellationToken);
     }
 
     public ValueTask Remove(string id)
