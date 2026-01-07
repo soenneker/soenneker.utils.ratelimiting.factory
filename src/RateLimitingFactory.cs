@@ -1,5 +1,5 @@
 using Soenneker.Utils.RateLimiting.Factory.Abstract;
-using Soenneker.Utils.SingletonDictionary;
+using Soenneker.Dictionaries.Singletons;
 using Soenneker.Utils.RateLimiting.Executor;
 using System.Threading.Tasks;
 using System;
