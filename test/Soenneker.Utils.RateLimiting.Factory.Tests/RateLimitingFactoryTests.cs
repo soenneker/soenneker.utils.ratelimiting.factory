@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Soenneker.Utils.RateLimiting.Executor;
 using System;
 using Microsoft.Extensions.Logging;
-using Soenneker.Facts.Local;
 
 namespace Soenneker.Utils.RateLimiting.Factory.Tests;
 
@@ -19,7 +18,12 @@ public class RateLimitingFactoryTests : FixturedUnitTest
         _factory = Resolve<IRateLimitingFactory>(true);
     }
 
-    [LocalFact]
+    [Fact]
+    public void Default()
+    {
+    }
+
+    [Fact]
     public async Task Execute_should_execute_in_order()
     {
         RateLimitingExecutor rateLimitingExecutor = await _factory.Get("test", TimeSpan.FromSeconds(2), CancellationToken);
