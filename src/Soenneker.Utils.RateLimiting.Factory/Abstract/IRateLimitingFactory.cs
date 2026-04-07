@@ -36,7 +36,7 @@ public interface IRateLimitingFactory : IAsyncDisposable, IDisposable
     /// </summary>
     /// <param name="id">A unique identifier for the rate-limiting executor to remove.</param>
     /// <returns>A <see cref="ValueTask"/> representing the asynchronous operation.</returns>
-    ValueTask Remove(string id);
+    ValueTask<bool> Remove(string id);
 
     /// <summary>
     /// Removes a rate-limiting executor synchronously by its ID.

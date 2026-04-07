@@ -32,7 +32,7 @@ public sealed class RateLimitingFactory : IRateLimitingFactory
         return _executors.GetSync(id, interval, cancellationToken);
     }
 
-    public ValueTask Remove(string id)
+    public ValueTask<bool> Remove(string id)
     {
         return _executors.Remove(id);
     }
