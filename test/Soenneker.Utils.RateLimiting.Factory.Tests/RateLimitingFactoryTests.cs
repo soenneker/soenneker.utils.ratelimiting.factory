@@ -1,6 +1,5 @@
 using Soenneker.Utils.RateLimiting.Factory.Abstract;
-using Soenneker.Tests.FixturedUnit;
-using Xunit;
+using Soenneker.Tests.HostedUnit;
 using System.Threading.Tasks;
 using Soenneker.Utils.RateLimiting.Executor;
 using System;
@@ -8,22 +7,22 @@ using Microsoft.Extensions.Logging;
 
 namespace Soenneker.Utils.RateLimiting.Factory.Tests;
 
-[Collection("Collection")]
-public class RateLimitingFactoryTests : FixturedUnitTest
+[ClassDataSource<Host>(Shared = SharedType.PerTestSession)]
+public class RateLimitingFactoryTests : HostedUnitTest
 {
     private readonly IRateLimitingFactory _factory;
 
-    public RateLimitingFactoryTests(Fixture fixture, ITestOutputHelper output) : base(fixture, output)
+    public RateLimitingFactoryTests(Host host) : base(host)
     {
         _factory = Resolve<IRateLimitingFactory>(true);
     }
 
-    [Fact]
+    [Test]
     public void Default()
     {
     }
 
-    [Fact]
+    [Test]
     public async Task Execute_should_execute_in_order()
     {
         RateLimitingExecutor rateLimitingExecutor = await _factory.Get("test", TimeSpan.FromSeconds(2), CancellationToken);
