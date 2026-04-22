@@ -32,10 +32,5 @@
     <ItemGroup>
         <ProjectReference Include="..\..\src\Soenneker.Utils.RateLimiting.Factory\Soenneker.Utils.RateLimiting.Factory.csproj" />
     </ItemGroup>
-
-    <ItemGroup>
-        <Content Include="testconfig.json">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </Content>
-    </ItemGroup>
 </Project>
+
