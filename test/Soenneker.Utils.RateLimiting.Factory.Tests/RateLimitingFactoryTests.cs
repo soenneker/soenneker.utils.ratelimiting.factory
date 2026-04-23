@@ -25,7 +25,7 @@ public class RateLimitingFactoryTests : HostedUnitTest
     [Test]
     public async Task Execute_should_execute_in_order()
     {
-        RateLimitingExecutor rateLimitingExecutor = await _factory.Get("test", TimeSpan.FromSeconds(2), CancellationToken);
+        RateLimitingExecutor rateLimitingExecutor = await _factory.Get("test", TimeSpan.FromSeconds(2), System.Threading.CancellationToken.None);
 
         for (int i = 0; i < 5; i++)
         {
@@ -34,7 +34,7 @@ public class RateLimitingFactoryTests : HostedUnitTest
                 Logger.LogInformation($"Executing Task {i + 1} at {DateTime.Now:HH:mm:ss}");
 
                 await Task.Delay(100, ct); // Simulate some work
-            }, CancellationToken);
+            }, System.Threading.CancellationToken.None);
         }
     }
 }

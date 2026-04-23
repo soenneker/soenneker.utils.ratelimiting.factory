@@ -16,18 +16,12 @@
         </Content>
     </ItemGroup>
 
-<<<<<<< HEAD
     <ItemGroup>
         <PackageReference Include="Soenneker.Tests.Attributes.Local" Version="4.0.0" />
         <PackageReference Include="Soenneker.Utils.Test" Version="4.0.314" />
         <PackageReference Include="Soenneker.Tests.HostedUnit" Version="4.0.13" />
         <PackageReference Include="TUnit" Version="1.37.24" />
     </ItemGroup>
-=======
-    <ItemGroup><PackageReference Include="Soenneker.Facts.Local" Version="4.0.616" /><PackageReference Include="Soenneker.Utils.Test" Version="4.0.314" />
-        <PackageReference Include="Soenneker.Tests.FixturedUnit" Version="4.0.2305" />
-    <PackageReference Include="xUnit.v3" Version="3.2.2" /></ItemGroup>
->>>>>>> 941ca237046c6aa4b245778727742a9c92f65738
 
     <ItemGroup>
         <ProjectReference Include="..\..\src\Soenneker.Utils.RateLimiting.Factory\Soenneker.Utils.RateLimiting.Factory.csproj" />
