@@ -42,11 +42,18 @@ public sealed class RateLimitingFactory : IRateLimitingFactory
         _executors.RemoveSync(id);
     }
 
+    /// <summary>
+    /// Asynchronously releases resources used by the current instance.
+    /// </summary>
+    /// <returns>A task that represents the asynchronous operation.</returns>
     public ValueTask DisposeAsync()
     {
         return _executors.DisposeAsync();
     }
 
+    /// <summary>
+    /// Releases resources used by the current instance.
+    /// </summary>
     public void Dispose()
     {
         _executors.Dispose();
