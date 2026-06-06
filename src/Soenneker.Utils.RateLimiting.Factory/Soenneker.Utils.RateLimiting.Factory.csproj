@@ -46,6 +46,6 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.8" />
         <PackageReference Include="Soenneker.Utils.RateLimiting.Executor" Version="4.0.534" />
-        <PackageReference Include="Soenneker.Dictionaries.Singletons" Version="4.0.49" />
+        <PackageReference Include="Soenneker.Dictionaries.Singletons" Version="4.0.50" />
     </ItemGroup>
 </Project>
