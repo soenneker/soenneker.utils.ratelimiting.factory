@@ -7,7 +7,6 @@ using System.Threading;
 
 namespace Soenneker.Utils.RateLimiting.Factory;
 
-/// <inheritdoc cref="IRateLimitingFactory"/>
 public sealed class RateLimitingFactory : IRateLimitingFactory
 {
     private readonly SingletonDictionary<RateLimitingExecutor, TimeSpan> _executors;
@@ -34,26 +33,19 @@ public sealed class RateLimitingFactory : IRateLimitingFactory
 
     public ValueTask<bool> Remove(string id)
     {
-        return _executors.Remove(id);
+        return _executors.Evict(id);
     }
 
     public void RemoveSync(string id)
     {
-        _executors.RemoveSync(id);
+        _executors.EvictSync(id);
     }
 
-    /// <summary>
-    /// Asynchronously releases resources used by the current instance.
-    /// </summary>
-    /// <returns>A task that represents the asynchronous operation.</returns>
     public ValueTask DisposeAsync()
     {
         return _executors.DisposeAsync();
     }
 
-    /// <summary>
-    /// Releases resources used by the current instance.
-    /// </summary>
     public void Dispose()
     {
         _executors.Dispose();

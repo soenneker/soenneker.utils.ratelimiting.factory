@@ -32,14 +32,14 @@ public interface IRateLimitingFactory : IAsyncDisposable, IDisposable
     RateLimitingExecutor GetSync(string id, TimeSpan interval, CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Removes a rate-limiting executor asynchronously by its ID.
+    /// Removes and disposes a rate-limiting executor by its ID, coordinating with in-flight creation.
     /// </summary>
     /// <param name="id">A unique identifier for the rate-limiting executor to remove.</param>
     /// <returns>A <see cref="ValueTask"/> representing the asynchronous operation.</returns>
     ValueTask<bool> Remove(string id);
 
     /// <summary>
-    /// Removes a rate-limiting executor synchronously by its ID.
+    /// Synchronously removes and disposes a rate-limiting executor by its ID, coordinating with in-flight creation.
     /// </summary>
     /// <param name="id">A unique identifier for the rate-limiting executor to remove.</param>
     void RemoveSync(string id);
