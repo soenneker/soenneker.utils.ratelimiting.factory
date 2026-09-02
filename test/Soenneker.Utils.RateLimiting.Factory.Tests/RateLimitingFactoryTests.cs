@@ -1,3 +1,4 @@
+using System.Threading;
 using Soenneker.Utils.RateLimiting.Factory.Abstract;
 using Soenneker.Tests.HostedUnit;
 using System.Threading.Tasks;
@@ -23,9 +24,9 @@ public class RateLimitingFactoryTests : HostedUnitTest
     }
 
     [Test]
-    public async Task Execute_should_execute_in_order()
+    public async Task Execute_should_execute_in_order(CancellationToken cancellationToken)
     {
-        RateLimitingExecutor rateLimitingExecutor = await _factory.Get("test", TimeSpan.FromSeconds(2), System.Threading.CancellationToken.None);
+        RateLimitingExecutor rateLimitingExecutor = await _factory.Get("test", TimeSpan.FromSeconds(2), cancellationToken);
 
         for (int i = 0; i < 5; i++)
         {
