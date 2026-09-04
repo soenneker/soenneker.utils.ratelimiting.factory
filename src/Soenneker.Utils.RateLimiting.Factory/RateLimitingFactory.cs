@@ -7,6 +7,7 @@ using System.Threading;
 
 namespace Soenneker.Utils.RateLimiting.Factory;
 
+/// <inheritdoc cref="IRateLimitingFactory" />
 public sealed class RateLimitingFactory : IRateLimitingFactory
 {
     private readonly SingletonDictionary<RateLimitingExecutor, TimeSpan> _executors;
