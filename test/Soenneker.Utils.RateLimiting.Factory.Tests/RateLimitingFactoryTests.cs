@@ -24,7 +24,7 @@ public class RateLimitingFactoryTests : HostedUnitTest
     }
 
     [Test]
-    public async Task Execute_should_execute_in_order(CancellationToken cancellationToken)
+    public async ValueTask Execute_should_execute_in_order(CancellationToken cancellationToken)
     {
         RateLimitingExecutor rateLimitingExecutor = await _factory.Get("test", TimeSpan.FromSeconds(2), cancellationToken);
 
