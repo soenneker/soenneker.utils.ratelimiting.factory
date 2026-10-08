@@ -35,7 +35,7 @@ public class RateLimitingFactoryTests : HostedUnitTest
                 Logger.LogInformation($"Executing Task {i + 1} at {DateTime.Now:HH:mm:ss}");
 
                 await Task.Delay(100, ct); // Simulate some work
-            }, System.Threading.CancellationToken.None);
+            }, cancellationToken);
         }
     }
 }
