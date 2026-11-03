@@ -47,6 +47,6 @@
 
     <ItemGroup>
         <PackageReference Include="Soenneker.Utils.RateLimiting.Executor" Version="11.0.646" />
-        <PackageReference Include="Soenneker.Dictionaries.Singletons" Version="11.0.134" />
+        <PackageReference Include="Soenneker.Dictionaries.Singletons" Version="11.0.135" />
     </ItemGroup>
 </Project>
